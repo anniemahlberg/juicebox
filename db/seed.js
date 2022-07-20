@@ -120,11 +120,11 @@ async function testDB() {
             name: 'Newname Sogood',
             location: 'London'
         });
-        console.log("Result: ", updateUserResult);
+        console.log("Update User Result: ", updateUserResult);
 
         console.log("Getting all posts...");
         const posts = await getAllPosts();
-        console.log("Result: ", posts);
+        console.log("All Posts Result: ", posts);
         console.log("Got all posts");
 
         console.log("Updating posts...");
@@ -132,13 +132,16 @@ async function testDB() {
             title: "New Title",
             content: "Updated Content!!!"
         })
-        console.log("Result: ", updatePostResult);
+        console.log("Update Post Result: ", updatePostResult);
         console.log("done updating posts");
 
-        console.log("Getting users with id 1");
+        console.log("Getting users by ID");
+        const albert = await getUserById(1);
         const sandra = await getUserById(2);
-        console.log("Result: ", sandra);
-        console.log("Got albert!");
+        const glamgal = await getUserById(3);
+        console.log("Albert Result: ", albert);
+        console.log("Sandra Result: ", sandra);
+        console.log("Glamgal Result: ", glamgal);
 
         console.log('Finished database tests!');
     } catch (error) {

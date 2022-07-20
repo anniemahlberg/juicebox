@@ -65,18 +65,19 @@ async function createPost({
     }
 }
 
-async function updatePost(id, {
-    title,
-    content,
-    active
-}) {
+async function updatePost(id, fields = {}) {
+    const keys = Object.keys(fields);
+    const setString = keys.map((key, index) =>
+        `"${key}"=$${index + 1}`
+    );
+
     try {
         const { rows: [ post ] } = await client.query(`
             UPDATE posts
-            SET "title"=$1, "content"=$2, "active"=$3
+            SET ${setString}
             WHERE id=${ id }
             RETURNING *;
-        `, [title, content, active]);
+        `, Object.values(fields));
 
         return post;
     } catch (error) {
