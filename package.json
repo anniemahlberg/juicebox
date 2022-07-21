@@ -6,9 +6,17 @@
   "scripts": {
     "seed:dev": "nodemon ./db/seed.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anniemahlberg/juicebox.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anniemahlberg/juicebox/issues"
+  },
+  "homepage": "https://github.com/anniemahlberg/juicebox#readme",
   "dependencies": {
     "pg": "^8.7.3"
   },
