@@ -164,13 +164,9 @@ async function testDB() {
         });
         console.log("Result: ", updatePostTagResult);
 
-        console.log("ALL USERS FETCHED BY THIER ID");
+        console.log("FETCHING USER WITH ID 1");
         const albert = await getUserById(1);
-        const sandra = await getUserById(2);
-        const glamgal = await getUserById(3);
         console.log("Albert Result: ", albert);
-        console.log("Sandra Result: ", sandra);
-        console.log("Glamgal Result: ", glamgal);
 
         console.log("ALL POSTS WITH #HAPPY TAG")
         const postsWithHappy = await getPostsByTagName('#happy');
