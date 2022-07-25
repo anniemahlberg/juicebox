@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "seed:dev": "nodemon ./db/seed.js"
+    "seed:dev": "nodemon ./db/seed.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,8 @@
   },
   "homepage": "https://github.com/anniemahlberg/juicebox#readme",
   "dependencies": {
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
     "pg": "^8.7.3"
   },
   "devDependencies": {
