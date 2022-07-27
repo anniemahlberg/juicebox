@@ -10,13 +10,14 @@ function requireUser(req, res, next) {
 }
 
 function requireActiveUser(req, res, next) {
-    console.log(req.user)
     if (!req.user.active) {
         next({
             name: "UnactiveUserError",
             message: "You must be an active user in order to perform this action"
         })
     }
+
+    next();
 }
 
 module.exports = {

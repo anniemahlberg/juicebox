@@ -73,19 +73,24 @@ usersRouter.post('/register', async (req, res, next) => {
     }
 });
 
-usersRouter.delete('/:userId', requireUser, requireActiveUser, async (req, res, next) => {
+usersRouter.patch('/:userId', requireUser, async (req, res, next) => {
     const { userId } = req.params;
     try {
         const user = await getUserById(userId);
 
         if (user && user.id === req.user.id) {
-            const updatedUser = await updateUser(user.id, { active: false })
+            let updatedUser = ""
+            if (user.active) {
+                updatedUser = await updateUser(user.id, { active: false })
+            } else {
+                updatedUser = await updateUser(user.id, { active: true })
+            }
 
             res.send({ user: updatedUser });
         } else {
             next(user ? {
                 name: 'UnauthorizedUserError',
-                message: 'You cannot delete a user that is not you'
+                message: 'You change active status for a user that is not you'
             } : {
                 name: 'UserNotFoundError',
                 message: 'That user does not exist'

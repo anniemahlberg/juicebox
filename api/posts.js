@@ -23,6 +23,7 @@ postsRouter.post('/', requireUser, requireActiveUser, async (req, res, next) => 
         postData.content = content;
 
         const post = await createPost(postData);
+        console.log("post: ", post);
 
         if (post) {
             res.send({ post });
